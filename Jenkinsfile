@@ -1,14 +1,16 @@
 node {
     checkout scm
-    tool name: 'Docker 19.03.5', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
-    withEnv(["PATH=${tool name: 'Docker 19.03.5', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'}/docker:${env.PATH}"]) {
-        sh'''
-        set -ex
-        docker build -t registry.programmerq.net/programmerq/pushbullet-cli:latest .
-        docker push registry.programmerq.net/programmerq/pushbullet-cli:latest
-        set +e
-        docker rmi registry.programmerq.net/programmerq/pushbullet-cli:latest
-        '''
+    #tool name: 'Docker 19.03.5', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
+    sshagent(['37850802-4ab0-4ffc-b519-2753a85e9625']) {
+        withEnv(['DOCKER_HOST=ssh://root@dusto01.', "PATH=${tool name: 'Docker 19.03.5', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'}:${env.PATH}"]) {
+            sh'''
+            set -ex
+            docker build -t registry.programmerq.net/programmerq/pushbullet-cli:latest .
+            docker push registry.programmerq.net/programmerq/pushbullet-cli:latest
+            set +e
+            docker rmi registry.programmerq.net/programmerq/pushbullet-cli:latest
+            '''
+        }
     }
 }
 
