@@ -1,6 +1,6 @@
 node {
     checkout scm
-    #tool name: 'Docker 19.03.5', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
+    //tool name: 'Docker 19.03.5', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
     sshagent(['37850802-4ab0-4ffc-b519-2753a85e9625']) {
         withEnv(['DOCKER_HOST=ssh://root@dusto01.', "PATH=${tool name: 'Docker 19.03.5', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'}:${env.PATH}"]) {
             sh'''
