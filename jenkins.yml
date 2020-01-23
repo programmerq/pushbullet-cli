@@ -1,0 +1,15 @@
+jenkins:
+  systemMessage: "Jenkins configured automatically by Jenkins Configuration as Code plugin\n\n"
+tool:
+  dockerTool:
+    installations:
+    - name: "Docker 19.03.5"
+      properties:
+      - installSource:
+          installers:
+          - zip:
+              url: "https://download.docker.com/linux/static/stable/x86_64/docker-19.03.5.tgz"
+  git:
+    installations:
+    - home: "git"
+      name: "Default"
