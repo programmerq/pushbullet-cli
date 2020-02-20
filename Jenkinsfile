@@ -2,7 +2,7 @@ node {
     checkout scm
     //tool name: 'Docker 19.03.5', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
     sshagent(['37850802-4ab0-4ffc-b519-2753a85e9625']) {
-        withEnv(['DOCKER_HOST=ssh://root@dust01.', "PATH=${tool name: 'Docker 19.03.5', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'}:${env.PATH}"]) {
+        withEnv(['DOCKER_HOST=ssh://root@dust01.', "PATH=${tool name: 'Docker 19.03.5', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'}/bin:${env.PATH}"]) {
             //withCredentials([usernamePassword(credentialsId: 'docker-hub-programmerq-token', passwordVariable: 'HUBPASS', usernameVariable: 'HUBUSER')]) {
             withDockerRegistry(credentialsId: 'docker-hub-programmerq-token', toolName: 'Docker 19.03.5') {
                 sh'''
