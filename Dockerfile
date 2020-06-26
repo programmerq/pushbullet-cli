@@ -4,3 +4,4 @@ RUN apk --no-cache add bash vim python3 py3-pip build-base python3-dev libffi-de
 RUN pip3 install pushbullet-cli==${PBVER}
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
+LABEL PROJECT=pbcli
